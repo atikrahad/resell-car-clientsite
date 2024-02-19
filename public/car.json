@@ -1,0 +1,30 @@
+{
+    "top_car_brands": [
+      {
+        "id": 1,
+        "name": "Toyota",
+        "image_url": "https://i.ibb.co/rHY1Mjt/download-1.png"
+      },
+      {
+        "id": 2,
+        "name": "Honda",
+        "image_url": "https://www.cdnlogo.com/logos/h/27/honda-automobiles.svg"
+      },
+      {
+        "id": 3,
+        "name": "BMW",
+        "image_url": "https://i.ibb.co/ZMJDDZB/download.jpg"
+      },
+      {
+        "id": 4,
+        "name": "Ford",
+        "image_url": "https://i.ibb.co/CHQCD19/download-2.png"
+      },
+      {
+        "id": 5,
+        "name": "Mercedes-Benz",
+        "image_url": "https://i.ibb.co/8cGyvKs/download-1.jpg"
+      }
+    ]
+  }
+  

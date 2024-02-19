@@ -3,13 +3,14 @@ import img from "../assets/logo/logo.png";
 import { IoMenu } from "react-icons/io5";
 import { useEffect, useState } from "react";
 const Navber = () => {
-  const [theme, setTheme] = useState(localStorage.getItem("theme")? localStorage.getItem('theme'): 'light')
-  useEffect(()=>{
-    localStorage.setItem('theme', theme)
-    const getTheme = localStorage.getItem('theme')
-    document.querySelector('html').setAttribute('data-theme', getTheme)
-  },[theme])
-
+  const [theme, setTheme] = useState(
+    localStorage.getItem("theme") ? localStorage.getItem("theme") : "light"
+  );
+  useEffect(() => {
+    localStorage.setItem("theme", theme);
+    const getTheme = localStorage.getItem("theme");
+    document.querySelector("html").setAttribute("data-theme", getTheme);
+  }, [theme]);
 
   const nav = (
     <>
@@ -49,12 +50,15 @@ const Navber = () => {
             {nav}
           </ul>
         </div>
+        
         <div className="navbar-end">
           <label className="cursor-pointer grid place-items-center">
             <input
               type="checkbox"
-              value="synthwave"
-              onChange={e=> e.target.checked? setTheme('dark'):setTheme('light')}
+              value={true}
+              onChange={(e) =>
+                e.target.checked ? setTheme("dark") : setTheme("light")
+              }
               className="toggle theme-controller bg-base-content row-start-1 col-start-1 col-span-2"
             />
             <svg

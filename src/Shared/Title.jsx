@@ -6,7 +6,9 @@ const Title = ({ title, sub }) => {
       <h1 className="text-3xl font-medium">{title}</h1>
       <div className="flex items-center">
         <h3 className="text-xl">{sub}</h3>
-        <GoArrowUpRight className="text-2xl" />
+        {
+            sub && <GoArrowUpRight className="text-2xl" />
+        }
       </div>
     </div>
   );

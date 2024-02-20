@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 import img from "../assets/logo/logo.png";
 import { IoMenu } from "react-icons/io5";
 import { useEffect, useState } from "react";
-const Navber = ({bg, posi}) => {
+const Navber = ({bg, posi,textc}) => {
   const [theme, setTheme] = useState(
     localStorage.getItem("theme") ? localStorage.getItem("theme") : "light"
   );
@@ -23,7 +23,7 @@ const Navber = ({bg, posi}) => {
 
   return (
     <div className={`${posi} w-full`}>
-      <div className={`navbar max-w-screen-lg mx-auto ${bg}`}>
+      <div className={`navbar ${textc} max-w-screen-lg mx-auto ${bg}`}>
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">

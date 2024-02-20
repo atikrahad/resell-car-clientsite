@@ -34,11 +34,37 @@ const Addcarform = () => {
             cols=""
             rows="5"
           ></textarea>
+          <div className="flex gap-2">
           <input
             type="number"
             placeholder="Price"
             className="border-0 outline-none w-full bg-transparent p-5 border-b-2"
           />
+          <input
+            type="number"
+            placeholder="Speed"
+            className="border-0 outline-none w-full bg-transparent p-5 border-b-2"
+          />
+          </div>
+          <div className="flex items-center gap-2">
+            <select
+              className="border-0 outline-none w-full bg-transparent p-5 border-b-2"
+              name=""
+              id=""
+            >
+              <option value="petrol">Petrol</option>
+              <option value="disel">Disel</option>
+              <option value="octen">Octen</option>
+            </select>
+            <select
+              className="border-0 outline-none w-full bg-transparent p-5 border-b-2"
+              name=""
+              id=""
+            >
+              <option value="auto">Automatic</option>
+              <option value="mud">MUD</option>
+            </select>
+          </div>
           <div className="flex items-center gap-2">
             <select
               className="border-0 outline-none w-full bg-transparent p-5 border-b-2"

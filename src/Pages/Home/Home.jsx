@@ -9,7 +9,7 @@ import Whychoose from "./homeComponents/Whychoose";
 const Home = () => {
   return (
     <div>
-      <Navber bg={'bg-transparent'} posi={'absolute'}></Navber>
+      <Navber bg={'bg-transparent'} textc={'text-white'} posi={'absolute'}></Navber>
       <Banner img={img}></Banner>
       <Brands></Brands>
       <Vehicles></Vehicles>

@@ -3,6 +3,7 @@ import Footer from "../../Shared/Footer";
 import Navber from "../../Shared/Navber";
 import img from "../../assets/banner/img1.jpg";
 import Brands from "./homeComponents/Brands";
+import Getstart from "./homeComponents/Getstart";
 import Vehicles from "./homeComponents/Vehicles";
 import Whychoose from "./homeComponents/Whychoose";
 
@@ -15,6 +16,7 @@ const Home = () => {
       <Vehicles></Vehicles>
       <hr className="max-w-6xl mx-auto"/>
       <Whychoose></Whychoose>
+      <Getstart></Getstart>
       <Footer></Footer>
     </div>
   );

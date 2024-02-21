@@ -8,10 +8,13 @@ const Privateroute = ({ children }) => {
   const location = useLocation();
   const navigate = useNavigate();
   console.log(location);
-  if(loading){
-    return <div className="h-screen w-[100vw] flex items-center justify-center"><h1>loading...</h1></div>
-  }
-  else if (user) {
+  if (loading) {
+    return (
+      <div className="h-screen w-[100vw] flex items-center justify-center">
+        <h1>loading...</h1>
+      </div>
+    );
+  } else if (user) {
     return children;
   } else {
     Swal.fire({

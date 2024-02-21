@@ -4,6 +4,7 @@ import {
   getAuth,
   onAuthStateChanged,
   signInWithPopup,
+  signOut,
 } from "firebase/auth";
 import { app } from "../Firebase/firebase";
 
@@ -17,6 +18,10 @@ const Authprovider = ({ children }) => {
     setLoading(true)
     return signInWithPopup(auth, googleProvider);
   };
+  const Logout = ()=>{
+    setLoading(true)
+    return signOut(auth)
+  }
   useEffect(() => {
     const subsCribe = onAuthStateChanged(auth, (userinf) => {
       setUser(userinf);
@@ -27,7 +32,8 @@ const Authprovider = ({ children }) => {
   const authInfo = {
     user,
     login,
-    loading
+    loading,
+    Logout
   };
   return (
     <UserProvider.Provider value={authInfo}>{children}</UserProvider.Provider>

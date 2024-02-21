@@ -5,7 +5,7 @@ import { CgProfile } from "react-icons/cg";
 import { useEffect, useState } from "react";
 import useContextapi from "../Contextapi/useContextapi";
 const Navber = ({ bg, posi, textc }) => {
-  const { login, user } = useContextapi();
+  const { login, user, Logout } = useContextapi();
   
 
   const [theme, setTheme] = useState(
@@ -22,6 +22,11 @@ const Navber = ({ bg, posi, textc }) => {
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
   };
+
+  const userLogout = ()=>{
+    Logout()
+
+  }
 
   const nav = (
     <>
@@ -116,7 +121,7 @@ const Navber = ({ bg, posi, textc }) => {
               className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
             >
               {user ? (
-                <button>Logout</button>
+                <button onClick={userLogout}>Logout</button>
               ) : (
                 <button onClick={userLOgin}>Login with google</button>
               )}

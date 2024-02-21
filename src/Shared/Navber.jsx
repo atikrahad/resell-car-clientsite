@@ -32,8 +32,15 @@ const Navber = ({ bg, posi, textc }) => {
     <>
       <NavLink to={"/"}>Home</NavLink>
       <NavLink to={"/about"}>About Us</NavLink>
-      <NavLink to={"/addcar"}>Add Car</NavLink>
-      <NavLink to={"/mycart"}>My Cart</NavLink>
+      {
+        user && <NavLink to={"/addcar"}>Add Car</NavLink>
+        
+      }
+      {
+        user && 
+        <NavLink to={"/mycart"}>My Cart</NavLink>
+        
+      }
     </>
   );
 
@@ -118,12 +125,12 @@ const Navber = ({ bg, posi, textc }) => {
             </div>
             <ul
               tabIndex={0}
-              className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
+              className="dropdown-content z-[1] menu p-2 shadow shadow-slate-500 bg-base-100 rounded-box w-40"
             >
               {user ? (
-                <button onClick={userLogout}>Logout</button>
+                <button  onClick={userLogout}>Logout</button>
               ) : (
-                <button onClick={userLOgin}>Login with google</button>
+                <button  onClick={userLOgin}>Login with google</button>
               )}
             </ul>
           </div>

@@ -1,8 +1,10 @@
 import { NavLink } from "react-router-dom";
 import img from "../assets/logo/logo.png";
 import { IoMenu } from "react-icons/io5";
+import { CgProfile } from "react-icons/cg";
 import { useEffect, useState } from "react";
-const Navber = ({bg, posi,textc}) => {
+const Navber = ({ bg, posi, textc }) => {
+  
   const [theme, setTheme] = useState(
     localStorage.getItem("theme") ? localStorage.getItem("theme") : "light"
   );
@@ -23,11 +25,11 @@ const Navber = ({bg, posi,textc}) => {
 
   return (
     <div className={`${posi} w-full`}>
-      <div className={`navbar ${textc} max-w-screen-lg mx-auto ${bg}`}>
+      <div className={`navbar max-w-screen-lg mx-auto ${bg}`}>
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
-              <IoMenu className="text-3xl text-white" />
+              <IoMenu className="text-3xl text-primary" />
             </div>
             <ul
               tabIndex={0}
@@ -46,11 +48,11 @@ const Navber = ({bg, posi,textc}) => {
           </NavLink>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu text-xl activeRoute font-medium space-x-10 menu-horizontal px-1">
+          <ul className={`menu text-xl ${textc} activeRoute font-medium space-x-10 menu-horizontal px-1`}>
             {nav}
           </ul>
         </div>
-        
+
         <div className="navbar-end">
           <label className="cursor-pointer grid place-items-center">
             <input
@@ -91,7 +93,17 @@ const Navber = ({bg, posi,textc}) => {
               <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
             </svg>
           </label>
-          <a className="btn">Button</a>
+          <div className="dropdown md:ml-3 dropdown-bottom dropdown-end">
+            <div tabIndex={0} role="button" className="m-1">
+              <CgProfile className="text-5xl text-primary"></CgProfile>
+            </div>
+            <ul
+              tabIndex={0}
+              className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
+            >
+              <button>Login with google</button>
+            </ul>
+          </div>
         </div>
       </div>
     </div>

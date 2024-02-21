@@ -4,7 +4,7 @@ const Banner = ({img}) => {
         <div style={{
             backgroundImage: `linear-gradient(to bottom, rgba(24,24,24,0.75), rgba(24,24,24,0.75)), url(${img})`,
           }}
-          className="max-w-screen-2xl mx-auto bg-cover h-[800px]" 
+          className="max-w-screen-2xl mx-auto bg-cover h-[700px]" 
           >
             <div className="flex py-20 h-full items-center justify-center">
                 <div className="space-y-10">

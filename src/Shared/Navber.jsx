@@ -3,8 +3,11 @@ import img from "../assets/logo/logo.png";
 import { IoMenu } from "react-icons/io5";
 import { CgProfile } from "react-icons/cg";
 import { useEffect, useState } from "react";
+import useContextapi from "../Contextapi/useContextapi";
 const Navber = ({ bg, posi, textc }) => {
+  const { login, user } = useContextapi();
   
+
   const [theme, setTheme] = useState(
     localStorage.getItem("theme") ? localStorage.getItem("theme") : "light"
   );
@@ -13,6 +16,12 @@ const Navber = ({ bg, posi, textc }) => {
     const getTheme = localStorage.getItem("theme");
     document.querySelector("html").setAttribute("data-theme", getTheme);
   }, [theme]);
+
+  const userLOgin = () => {
+    login()
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
+  };
 
   const nav = (
     <>
@@ -48,7 +57,9 @@ const Navber = ({ bg, posi, textc }) => {
           </NavLink>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className={`menu text-xl ${textc} activeRoute font-medium space-x-10 menu-horizontal px-1`}>
+          <ul
+            className={`menu text-xl ${textc} activeRoute font-medium space-x-10 menu-horizontal px-1`}
+          >
             {nav}
           </ul>
         </div>
@@ -95,13 +106,20 @@ const Navber = ({ bg, posi, textc }) => {
           </label>
           <div className="dropdown md:ml-3 dropdown-bottom dropdown-end">
             <div tabIndex={0} role="button" className="m-1">
+              {
+                user? <img className="w-12 rounded-full" src={user.photoURL} alt="" />:
               <CgProfile className="text-5xl text-primary"></CgProfile>
+              }
             </div>
             <ul
               tabIndex={0}
               className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
             >
-              <button>Login with google</button>
+              {user ? (
+                <button>Logout</button>
+              ) : (
+                <button onClick={userLOgin}>Login with google</button>
+              )}
             </ul>
           </div>
         </div>

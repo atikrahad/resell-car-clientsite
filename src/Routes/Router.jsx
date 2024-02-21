@@ -4,6 +4,7 @@ import About from "../Pages/About/About";
 import Addcar from "../Pages/Addcar/Addcar";
 import Allcars from "../Pages/Allcars/Allcars";
 import Privateroute from "./Privateroute";
+import Mycart from "../Pages/Mycart/Mycart";
 
 const router = createBrowserRouter([
   {
@@ -21,6 +22,10 @@ const router = createBrowserRouter([
   {
     path: '/allcars',
     element: <Privateroute><Allcars></Allcars></Privateroute>
+  },
+  {
+    path: '/mycart',
+    element: <Privateroute><Mycart></Mycart></Privateroute>
   }
 ]);
 

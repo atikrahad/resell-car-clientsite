@@ -4,11 +4,14 @@ import Home from "../Pages/Home/Home";
 import { Navigate, useLocation, useNavigate } from "react-router-dom";
 
 const Privateroute = ({ children }) => {
-  const { user, login } = useContextapi();
+  const { user, loading, login } = useContextapi();
   const location = useLocation();
   const navigate = useNavigate();
   console.log(location);
-  if (user) {
+  if(loading){
+    return <div className="h-screen w-[100vw] flex items-center justify-center"><h1>loading...</h1></div>
+  }
+  else if (user) {
     return children;
   } else {
     Swal.fire({

@@ -1,9 +1,11 @@
 // import {useForm, SubmitHandler} from 'react-hook-form'
 import { CiImageOn } from "react-icons/ci";
 
+
 const Addcarform = () => {
+    
   return (
-    <div className="max-w-6xl mx-auto py-10">
+    <div className={`max-w-6xl  mx-auto py-10`}>
       <h1 className="text-center text-5xl font-semibold">
         Add new and used car for sell!
       </h1>

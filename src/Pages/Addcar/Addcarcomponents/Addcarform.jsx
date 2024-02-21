@@ -3,6 +3,8 @@ import { useState } from "react";
 import { CiImageOn } from "react-icons/ci";
 import {useForm} from 'react-hook-form'
 import useContextapi from "../../../Contextapi/useContextapi";
+import Publicaxios from "../../../Api/Publicaxios";
+import { RxCross2 } from "react-icons/rx";
 
 const Addcarform = () => {
   const {user} = useContextapi()
@@ -11,10 +13,12 @@ const Addcarform = () => {
   const {register, handleSubmit, reset} = useForm()
   const onSubmit = async e =>{
     e['img'] = image;
-    e['seller-name'] = user?.displayName;
-    e['seller-img'] = user?.photoURL;
-    e['seller-email'] = user?.email;
+    e['seller_name'] = user?.displayName;
+    e['seller_img'] = user?.photoURL;
+    e['seller_email'] = user?.email;
     console.log(e);
+    Publicaxios.post('/car', e)
+    .then(res => console.log(res))
 
     reset()
     setImage(null)
@@ -29,8 +33,8 @@ const Addcarform = () => {
           {image ? (
             <div className="relative flex flex-col justify-center items-center  border-blue-400 border w-[90%] mx-auto m-2 border-dashed">
               <img className="w-full" src={image} alt="" />
-              <button onClick={()=>setImage(null)} className="absolute -top-1 right-3 text-5xl text-red-600 ">
-                x
+              <button onClick={()=>setImage(null)} className="absolute -top-1 right-0 text-5xl text-red-600 ">
+                <RxCross2></RxCross2>
               </button>
             </div>
           ) : (
@@ -68,7 +72,8 @@ const Addcarform = () => {
         <div className="w-full space-y-5 p-5  ">
           <input
             type="text"
-            {...register('car-name')}
+            maxLength={30}
+            {...register('car_name')}
             placeholder="Car name and model number"
             className="border-0 bg-transparent outline-none w-full p-5 border-b-2"
           />
@@ -109,11 +114,11 @@ const Addcarform = () => {
             <select
               className="border-0 outline-none w-full bg-transparent p-5 border-b-2"
               name=""
-              {...register('class')}
+              {...register('classes')}
               id=""
             >
-              <option value="auto">Automatic</option>
-              <option value="mud">MUD</option>
+              <option value="Automatic">Automatic</option>
+              <option value="MUD">MUD</option>
             </select>
           </div>
           <div className="flex items-center gap-2">

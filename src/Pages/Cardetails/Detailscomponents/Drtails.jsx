@@ -25,6 +25,7 @@ const Drtails = ({ item }) => {
       email,
       carNo,
       img,
+      price,
       car_name,
     };
 

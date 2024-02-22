@@ -5,7 +5,6 @@ import Title from "../../Shared/Title";
 import Publicaxios from "../../Api/Publicaxios";
 import { useLocation } from "react-router-dom";
 import Drtails from "./Detailscomponents/Drtails";
-import { data } from "autoprefixer";
 
 const Cardetails = () => {
   const [cardetails, setCardetails] = useState({});
@@ -18,7 +17,7 @@ const Cardetails = () => {
     );
   }, [location]);
 
-  console.log(cardetails);
+  
 
   return (
     <div>

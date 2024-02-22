@@ -5,6 +5,8 @@ import Addcar from "../Pages/Addcar/Addcar";
 import Allcars from "../Pages/Allcars/Allcars";
 import Privateroute from "./Privateroute";
 import Mycart from "../Pages/Mycart/Mycart";
+import Cardetails from "../Pages/Cardetails/Cardetails";
+import Publicaxios from "../Api/Publicaxios";
 
 const router = createBrowserRouter([
   {
@@ -26,6 +28,11 @@ const router = createBrowserRouter([
   {
     path: '/mycart',
     element: <Privateroute><Mycart></Mycart></Privateroute>
+  },
+  {
+    path: '/cardetails/:id',
+    element: <Privateroute><Cardetails></Cardetails></Privateroute>,
+    loader: ({params})=> Publicaxios.get(`/allcar/${params.id}`)
   }
 ]);
 

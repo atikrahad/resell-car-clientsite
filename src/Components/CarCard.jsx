@@ -3,7 +3,7 @@ import { RiOilLine } from "react-icons/ri";
 import { TbAutomaticGearbox } from "react-icons/tb";
 import { NavLink } from "react-router-dom";
 const CarCard = ({item}) => {
-  const {car_name,price,seller_img,img,fuel,speed,classes,brand} = item;
+  const {car_name,price,seller_img,img,fuel,speed,classes,_id} = item;
   return (
     <div className="mx-5">
       <div className="card w-full bg-base-100 shadow-xl">
@@ -40,7 +40,7 @@ const CarCard = ({item}) => {
           <hr />
           <div className="flex items-center justify-between">
             <h1 className="text-3xl font-bold">{price}TK</h1>
-            <NavLink>View Details</NavLink>
+            <NavLink to={`cardetails/${_id}`}>View Details</NavLink>
           </div>
         </div>
       </div>

@@ -5,7 +5,7 @@ import Publicaxios from "../../../Api/Publicaxios";
 import Slider from "react-slick";
 
 const Vehicles = () => {
-  const [carsdata, setCarsdata] = useState();
+  const [carsdata, setCarsdata] = useState([]);
   useEffect(() => {
     Publicaxios.get("/resentcars").then((res) => setCarsdata(res.data));
   }, []);

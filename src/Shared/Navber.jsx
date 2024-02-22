@@ -6,7 +6,6 @@ import { useEffect, useState } from "react";
 import useContextapi from "../Contextapi/useContextapi";
 const Navber = ({ bg, posi, textc }) => {
   const { login, user, Logout } = useContextapi();
-  
 
   const [theme, setTheme] = useState(
     localStorage.getItem("theme") ? localStorage.getItem("theme") : "light"
@@ -23,24 +22,16 @@ const Navber = ({ bg, posi, textc }) => {
       .catch((err) => console.log(err));
   };
 
-  const userLogout = ()=>{
-    Logout()
-
-  }
+  const userLogout = () => {
+    Logout();
+  };
 
   const nav = (
     <>
       <NavLink to={"/"}>Home</NavLink>
       <NavLink to={"/about"}>About Us</NavLink>
-      {
-        user && <NavLink to={"/addcar"}>Add Car</NavLink>
-        
-      }
-      {
-        user && 
-        <NavLink to={"/mycart"}>My Cart</NavLink>
-        
-      }
+      {user && <NavLink to={"/addcar"}>Add Car</NavLink>}
+      {user && <NavLink to={"/mycart"}>My Cart</NavLink>}
     </>
   );
 
@@ -118,19 +109,20 @@ const Navber = ({ bg, posi, textc }) => {
           </label>
           <div className="dropdown md:ml-3 dropdown-bottom dropdown-end">
             <div tabIndex={0} role="button" className="m-1">
-              {
-                user? <img className="w-12 rounded-full" src={user.photoURL} alt="" />:
-              <CgProfile className="text-5xl text-primary"></CgProfile>
-              }
+              {user ? (
+                <img className="w-12 rounded-full" src={user.photoURL} alt="" />
+              ) : (
+                <CgProfile className="text-5xl text-primary"></CgProfile>
+              )}
             </div>
             <ul
               tabIndex={0}
               className="dropdown-content z-[1] menu p-2 shadow shadow-slate-500 bg-base-100 rounded-box w-40"
             >
               {user ? (
-                <button  onClick={userLogout}>Logout</button>
+                <button onClick={userLogout}>Logout</button>
               ) : (
-                <button  onClick={userLOgin}>Login with google</button>
+                <button onClick={userLOgin}>Login with google</button>
               )}
             </ul>
           </div>

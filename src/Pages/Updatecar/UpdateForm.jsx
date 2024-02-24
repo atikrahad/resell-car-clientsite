@@ -1,39 +1,60 @@
 // import {useForm, SubmitHandler} from 'react-hook-form'
+import PropTypes from 'prop-types'; 
+
 import { useState } from "react";
-import { CiImageOn } from "react-icons/ci";
-import {useForm} from 'react-hook-form'
-import useContextapi from "../../../Contextapi/useContextapi";
-import Publicaxios from "../../../Api/Publicaxios";
+import { useForm } from "react-hook-form";
+import Publicaxios from "../../Api/Publicaxios";
 import { RxCross2 } from "react-icons/rx";
+import { CiImageOn } from "react-icons/ci";
+import { useNavigate } from "react-router-dom";
 
-const Addcarform = () => {
-  const {user} = useContextapi()
-  
-  const [image, setImage] = useState(null);
-  const {register, handleSubmit, reset} = useForm()
-  const onSubmit = async e =>{
-    e['img'] = image;
-    e['seller_name'] = user?.displayName;
-    e['seller_img'] = user?.photoURL;
-    e['seller_email'] = user?.email;
-    console.log(e);
-    Publicaxios.post('/car', e)
-    .then(res => console.log(res))
+const UpdateForm = ({ data }) => {
+  const {
+    car_name,
+    price,
+    category,
+    brand,
+    description,
+    img,
+    fuel,
+    speed,
+    classes,
+    _id,
+  } = data;
 
-    reset()
-    setImage(null)
-  }
+  const navigate = useNavigate();
+
+  const [image, setImage] = useState(img);
+  const { register, handleSubmit, reset } = useForm();
+  const onSubmit = async (e) => {
+    e["img"] = image;
+
+    Publicaxios.put(`/car/${_id}`, e).then((res) => {
+      if (res.data) {
+        navigate(`/${_id}`);
+      }
+    });
+
+    reset();
+    setImage(null);
+  };
   return (
     <div className={`max-w-6xl  mx-auto py-10`}>
       <h1 className="text-center text-5xl font-semibold">
         Add new and used car for sell!
       </h1>
-      <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col md:flex-row items-center h-full justify-evenly">
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className="flex flex-col md:flex-row items-center h-full justify-evenly"
+      >
         <div className="w-full ">
           {image ? (
             <div className="relative flex flex-col justify-center items-center  border-blue-400 border w-[90%] mx-auto m-2 border-dashed">
               <img className="w-full" src={image} alt="" />
-              <button onClick={()=>setImage(null)} className="absolute -top-1 right-0 text-5xl text-red-600 ">
+              <button
+                onClick={() => setImage(null)}
+                className="absolute -top-1 right-0 text-5xl text-red-600 "
+              >
                 <RxCross2></RxCross2>
               </button>
             </div>
@@ -73,7 +94,8 @@ const Addcarform = () => {
           <input
             type="text"
             maxLength={30}
-            {...register('car_name')}
+            defaultValue={car_name}
+            {...register("car_name")}
             placeholder="Car name and model number"
             className="border-0 bg-transparent outline-none w-full p-5 border-b-2"
           />
@@ -81,7 +103,8 @@ const Addcarform = () => {
             placeholder="Shortly Description about your car"
             className="border-0 bg-transparent outline-none w-full p-5 border-b-2"
             name=""
-            {...register('description')}
+            defaultValue={description}
+            {...register("description")}
             id=""
             cols=""
             maxLength={150}
@@ -91,13 +114,15 @@ const Addcarform = () => {
             <input
               type="number"
               placeholder="Price"
-              {...register('price')}
+              defaultValue={price}
+              {...register("price")}
               className="border-0 outline-none w-full bg-transparent p-5 border-b-2"
             />
             <input
               type="number"
               placeholder="Speed"
-              {...register('speed')}
+              defaultValue={speed}
+              {...register("speed")}
               className="border-0 outline-none w-full bg-transparent p-5 border-b-2"
             />
           </div>
@@ -105,7 +130,8 @@ const Addcarform = () => {
             <select
               className="border-0 outline-none w-full bg-transparent p-5 border-b-2"
               name=""
-              {...register('fuel')}
+              defaultValue={fuel}
+              {...register("fuel")}
               id=""
             >
               <option value="petrol">Petrol</option>
@@ -115,7 +141,8 @@ const Addcarform = () => {
             <select
               className="border-0 outline-none w-full bg-transparent p-5 border-b-2"
               name=""
-              {...register('classes')}
+              defaultValue={classes}
+              {...register("classes")}
               id=""
             >
               <option value="Automatic">Automatic</option>
@@ -126,7 +153,8 @@ const Addcarform = () => {
             <select
               className="border-0 outline-none w-full bg-transparent p-5 border-b-2"
               name=""
-              {...register('category')}
+              defaultValue={category}
+              {...register("category")}
               id=""
             >
               <option value="new">New</option>
@@ -135,7 +163,8 @@ const Addcarform = () => {
             <select
               className="border-0 outline-none w-full bg-transparent p-5 border-b-2"
               name=""
-              {...register('brand')}
+              defaultValue={brand}
+              {...register("brand")}
               id=""
             >
               <option value="audi">Audi</option>
@@ -145,15 +174,23 @@ const Addcarform = () => {
               <option value="toyota">Toyota</option>
             </select>
           </div>
-          <input
-            type="submit"
-            className="btn btn-primary text-xl font-semibold w-full my-5"
-            value={"Add Car"}
-          />
+          <div className="flex gap-2 items-center">
+            <input
+              type="submit"
+              className="btn w-[70%] btn-primary text-xl font-semibold my-5"
+              value={"Add Car"}
+            />
+            <button className="btn text-xl my-5 btn-warning w-[30%]">
+              Delete car
+            </button>
+          </div>
         </div>
       </form>
     </div>
   );
 };
+UpdateForm.propTypes = {
+  data: PropTypes.object.isRequired
+}
 
-export default Addcarform;
+export default UpdateForm;

@@ -1,4 +1,5 @@
 import { NavLink } from "react-router-dom";
+import PropTypes from "prop-types"
 import img from "../assets/logo/logo.png";
 import { IoMenu } from "react-icons/io5";
 import { CgProfile } from "react-icons/cg";
@@ -131,5 +132,11 @@ const Navber = ({ bg, posi, textc }) => {
     </div>
   );
 };
+
+Navber.propTypes = {
+  bg: PropTypes.string,
+  posi: PropTypes.string,
+  textc: PropTypes.string,
+}
 
 export default Navber;

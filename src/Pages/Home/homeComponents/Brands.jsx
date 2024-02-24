@@ -37,6 +37,7 @@ const Brands = () => {
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
+          initialSlide: 1,
         },
       },
     ],
@@ -55,7 +56,7 @@ const Brands = () => {
           sub={"See all brands"}
         ></Title>
 
-        <div className="slider-container">
+        <div className="slider-container w-[90%] mx-auto">
           <Slider {...settings}>
             {cardata.map((item) => (
               <BrandCard key={item.id} item={item}></BrandCard>

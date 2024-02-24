@@ -33,7 +33,7 @@ const Getstart = () => {
   return (
     <div className="max-w-6xl mx-auto py-20">
         <Title title={"Get Start with us"}></Title>
-      <div className="flex items-center gap-5 justify-between">
+      <div className="flex flex-col md:flex-row items-center gap-5 justify-between">
         <div className="p-20 space-y-5 rounded-lg bg-[#43ec4396]">
           <h1 className="text-3xl font-medium">Are You Looking For a Car ?</h1>
           <p>

@@ -1,5 +1,10 @@
+import { NavLink } from "react-router-dom";
+import PropTypes from "prop-types"
 import Publicaxios from "../../../Api/Publicaxios";
 import useContextapi from "../../../Contextapi/useContextapi";
+import { ToastContainer, toast } from 'react-toastify';
+
+  import 'react-toastify/dist/ReactToastify.css';
 
 const Drtails = ({ item }) => {
   const { user } = useContextapi();
@@ -29,25 +34,40 @@ const Drtails = ({ item }) => {
       car_name,
     };
 
-    Publicaxios.post("/cart", cartItem).then((res) => console.log(res));
+    Publicaxios.post("/cart", cartItem).then((res) => {
+        if(res.data){
+            toast.success('Succesfully added to cart', {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+                // transition: Bounce,
+                });
+        }
+    });
   };
   return (
     <div className="flex flex-col md:flex-row md:gap-10 items-start">
-      <div className="w-full md:h-full -skew-y-2">
+      <div className="w-full md:h-full md:-skew-y-2">
         <img className="" src={img} alt="" />
         <div className="my-5 flex gap-3 flex-wrap">
-          <button onClick={handleCart} className="btn btn-neutral">
-            Add Cart
+          
+           
+          {user?.email !== seller_email && (
+            <button onClick={handleCart} className="btn btn-neutral"> Add Cart
           </button>
-          {user?.email === seller_email && (
-            <button className="btn btn-neutral">Delete Car</button>
           )}
+          
           {user?.email === seller_email && (
-            <button className="btn btn-neutral">Update Car</button>
+            <NavLink to={`/update/${_id}`} className="btn btn-neutral">Update car</NavLink>
           )}
         </div>
       </div>
-      <div className="w-full md:h-full skew-y-2 space-y-2">
+      <div className="w-full md:h-full md:skew-y-2 space-y-2">
         <h1 className="text-5xl font-medium">{car_name}</h1>
         <p className="text-sm">{description}</p>
         <p>Car type: {category}</p>
@@ -66,8 +86,11 @@ const Drtails = ({ item }) => {
           <h1 className="text-2xl font-semibold">{seller_name}</h1>
         </div>
       </div>
+      <ToastContainer/>
     </div>
   );
 };
-
+Drtails.propTypes = {
+  item: PropTypes.object.isRequired
+}
 export default Drtails;

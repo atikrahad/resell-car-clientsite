@@ -1,4 +1,5 @@
 import { BsSpeedometer2 } from "react-icons/bs";
+import PropTypes from "prop-types"
 import { RiOilLine } from "react-icons/ri";
 import { TbAutomaticGearbox } from "react-icons/tb";
 import { NavLink } from "react-router-dom";
@@ -8,7 +9,8 @@ const CarCard = ({item}) => {
     <div className="mx-5">
       <div className="card w-full bg-base-100 shadow-xl">
         <figure>
-          <img
+          <img 
+          className="h-52 w-full"
             src={img}
             alt="Shoes"
           />
@@ -47,5 +49,7 @@ const CarCard = ({item}) => {
     </div>
   );
 };
-
+CarCard.propTypes = {
+  item: PropTypes.object.isRequired
+}
 export default CarCard;

@@ -51,8 +51,8 @@ const Greateprice = () => {
 
     return (
         <div className="max-w-6xl mx-auto py-20">
+            <div className="w-[85%] md:w-full mx-auto">
             <Title title={"Greate Price best cars"}></Title>
-            <div className="w-[95%] mx-auto">
                 <Slider {...settings}>
                     
                     {

@@ -1,7 +1,7 @@
 import Swal from "sweetalert2";
 import useContextapi from "../Contextapi/useContextapi";
-import Home from "../Pages/Home/Home";
 import { Navigate, useLocation, useNavigate } from "react-router-dom";
+import PropTypes from "prop-types"
 
 const Privateroute = ({ children }) => {
   const { user, loading, login } = useContextapi();
@@ -41,5 +41,7 @@ const Privateroute = ({ children }) => {
     return <Navigate to="/"></Navigate>;
   }
 };
-
+Privateroute.propTypes = {
+  children: PropTypes.node
+}
 export default Privateroute;

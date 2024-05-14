@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
-import Footer from "../../Shared/Footer";
-import Navber from "../../Shared/Navber";
 import Title from "../../Shared/Title";
 import Publicaxios from "../../Api/Publicaxios";
 import { useLocation } from "react-router-dom";
 import Drtails from "./Detailscomponents/Drtails";
+import Navber from "../../Shared/Navber";
 
 const Cardetails = () => {
   const [cardetails, setCardetails] = useState({});
@@ -12,7 +11,7 @@ const Cardetails = () => {
   const location = useLocation();
 
   useEffect(() => {
-    Publicaxios.get(`/car${location.pathname}`).then((res) =>
+    Publicaxios.get(`/car${location.pathname.slice(11)}`).then((res) =>
       setCardetails(res.data)
     );
   }, [location]);
@@ -21,12 +20,11 @@ const Cardetails = () => {
 
   return (
     <div>
-      <Navber></Navber>
+        <Navber></Navber>
       <div className="max-w-6xl mx-auto py-20">
         <Title title={"Details about car"}></Title>
         <Drtails item={cardetails}></Drtails>
       </div>
-      <Footer></Footer>
     </div>
   );
 };

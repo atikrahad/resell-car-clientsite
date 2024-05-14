@@ -6,6 +6,7 @@ import {
   signInWithPopup,
   signOut,
 } from "firebase/auth";
+import PropTypes from "prop-types"
 import { app } from "../Firebase/firebase";
 
 export const UserProvider = createContext();
@@ -39,5 +40,10 @@ const Authprovider = ({ children }) => {
     <UserProvider.Provider value={authInfo}>{children}</UserProvider.Provider>
   );
 };
+
+Authprovider.propTypes ={
+  children: PropTypes.node,
+  
+}
 
 export default Authprovider;

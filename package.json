@@ -22,7 +22,6 @@
     "react-router-dom": "^6.22.1",
     "react-slick": "^0.30.2",
     "react-toastify": "^10.0.4",
-    "react-upload-gallery": "^0.4.1",
     "slick-carousel": "^1.8.1",
     "sort-by": "^1.2.0",
     "sweetalert2": "^11.10.5"

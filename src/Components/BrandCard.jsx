@@ -1,3 +1,4 @@
+import PropTypes from "prop-types"
 const BrandCard = ({ item }) => {
   const { image_url, name } = item;
   return (
@@ -8,4 +9,7 @@ const BrandCard = ({ item }) => {
   );
 };
 
+BrandCard.propTypes={
+  item: PropTypes.object.isRequired
+}
 export default BrandCard;

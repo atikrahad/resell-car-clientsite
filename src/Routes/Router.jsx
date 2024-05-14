@@ -8,42 +8,44 @@ import Mycart from "../Pages/Mycart/Mycart";
 import Cardetails from "../Pages/Cardetails/Cardetails";
 import Update from "../Pages/Updatecar/Update";
 import Errore from "../Pages/Errorpage/Errore";
+import App from "../App";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Home></Home>,
-    errorElement: <Errore></Errore>
+    element: <App></App>,
+    errorElement: <Errore></Errore>,
+    children: [
+
+      {
+        index: true,
+        element: <Home></Home>,
+      },
+      {
+        path: "update/:id",
+        element: <Privateroute><Update></Update></Privateroute>,
+      },
+      {
+        path: "about",
+        element: <About></About>,
+      },
+      {
+        path: "addcar",
+        element: <Privateroute><Addcar></Addcar></Privateroute>,
+      },
+      {
+        path: 'allcars',
+        element: <Allcars></Allcars>,
+      },
+      {
+        path: 'mycart',
+        element: <Privateroute><Mycart></Mycart></Privateroute>,
+      },
+      {
+        path: 'cardetails/:id',
+        element: <Privateroute><Cardetails></Cardetails></Privateroute>,
+      }
+    ]
   },
-  {
-    path: "update/:id",
-    element: <Privateroute><Update></Update></Privateroute>,
-    errorElement: <Errore></Errore>
-  },
-  {
-    path: "/about",
-    element: <About></About>,
-    errorElement: <Errore></Errore>
-  },
-  {
-    path: "/addcar",
-    element: <Privateroute><Addcar></Addcar></Privateroute>,
-    errorElement: <Errore></Errore>
-  },
-  {
-    path: '/allcars',
-    element: <Privateroute><Allcars></Allcars></Privateroute>,
-    errorElement: <Errore></Errore>
-  },
-  {
-    path: '/mycart',
-    element: <Privateroute><Mycart></Mycart></Privateroute>,
-    errorElement: <Errore></Errore>
-  },
-  {
-    path: '/:id',
-    element: <Privateroute><Cardetails></Cardetails></Privateroute>,
-    errorElement: <Errore></Errore>
-  }
 ]);
 
 export default router;

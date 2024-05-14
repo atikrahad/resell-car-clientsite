@@ -42,7 +42,7 @@ const CarCard = ({item}) => {
           <hr />
           <div className="flex items-center justify-between">
             <h1 className="text-3xl font-bold">{price}TK</h1>
-            <NavLink to={`/${_id}`}>View Details</NavLink>
+            <NavLink to={`/cardetails/${_id}`}>View Details</NavLink>
           </div>
         </div>
       </div>

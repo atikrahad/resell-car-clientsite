@@ -1,4 +1,3 @@
-import Footer from "../../Shared/Footer";
 import Navber from "../../Shared/Navber";
 import Addcarform from "./Addcarcomponents/Addcarform";
 
@@ -7,7 +6,6 @@ const Addcar = () => {
         <div>
             <Navber></Navber>
             <Addcarform></Addcarform>
-            <Footer></Footer>
         </div>
     );
 };

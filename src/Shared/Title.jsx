@@ -1,4 +1,5 @@
 import { GoArrowUpRight } from "react-icons/go";
+import PropTypes from 'prop-types'
 
 const Title = ({ title, sub }) => {
   return (
@@ -13,5 +14,8 @@ const Title = ({ title, sub }) => {
     </div>
   );
 };
-
+Title.propTypes={
+  title: PropTypes.string,
+  sub: PropTypes.string,
+}
 export default Title;

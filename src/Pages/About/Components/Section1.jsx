@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import img from "../../../assets/banner/about1.jpg";
 const Section1 = () => {
   return (

@@ -1,6 +1,7 @@
 import Banner from "../../Shared/Banner";
 import Navber from "../../Shared/Navber";
 import img from "../../assets/banner/about.jpg";
+import Advantage from "./Components/Advantage";
 import Section1 from "./Components/Section1";
 
 const About = () => {
@@ -15,6 +16,7 @@ const About = () => {
         img={img}
       ></Banner>
       <Section1></Section1>
+      <Advantage></Advantage>
     </div>
   );
 };
